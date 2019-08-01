@@ -142,7 +142,7 @@ app.beginUndoGroup("Generate Hands");
 
 
 // Start of Number of Hands to Make Function
-var runReps = myPanel.grp.myGroup.runReps.text;
+var runReps = 1;
 
 function runIt (reps) {
 
