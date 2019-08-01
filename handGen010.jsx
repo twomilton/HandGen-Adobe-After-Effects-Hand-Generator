@@ -12,10 +12,10 @@
 //		Generates One Basic Humanoid Hand in a Rubber Hose Cartoon Style
 
 
-//****************************PROGRAM FUNCTIONS*******************************//
+//****************************PROGRAM GLOBALS & FUNCTIONS*******************************//
 
-#include "funcsAE.jsx"
-#include "view.jsx"
+#include "functions.jsx"
+#include "controller.jsx"
 
 //******************************** PROG **************************************//
 
@@ -26,16 +26,16 @@ app.beginUndoGroup("Generate Hands");
 	// Start of Number of Hands to Make Function
 function runIt (reps) {
 
-		var existItems = app.project.items.length;
-		var cleanRun;
-		if (existItems == 0) {
-			cleanRun = 0;
-		}else {
-			cleanRun = existItems;
-			reps = reps + existItems;
-		}
+	var existItems = app.project.items.length;
+	var cleanRun;
+	if (existItems == 0) {
+		cleanRun = 0;
+	}else {
+		cleanRun = existItems;
+		reps = reps + existItems;
+	}
 
-		for (var j = 1; j <= reps; j++) {
+	for (var j = 1; j <= reps; j++) {
 
 							// BASE SKIN COLOR
 		var baseSkinColor = [rNm(1,1), rNm(1, 0.8), rNm(1, 0.8), 1] * rNm(0.1, 1);
@@ -115,7 +115,7 @@ function runIt (reps) {
 
 						//	4	CREATE FOUR "RUBBER HOSE" STYLE FINGERS ON SHAPE LAYER IN COMP
 
-#include "handGenFingers010.jsx"
+		#include "fingers.jsx"
 
 
 						//	5	CREATE "RUBBER HOSE" STYLE THUMB ON NEW SHAPE LAYER IN COMP
@@ -195,11 +195,11 @@ function runIt (reps) {
 
 			//Loop through Layers by index and parent to Null Layer
 		var i, curLayer;
-		    for (i = 2; i < thisComp.layers.length; i++) {
-		        curLayer = thisComp.layers[i];
-		            //add Parent
-		        curLayer.parent = handNull;
-		      };
+			for (i = 2; i < thisComp.layers.length; i++) {
+				curLayer = thisComp.layers[i];
+					//add Parent
+				curLayer.parent = handNull;
+			};
 
 		// Reposition Hand
 		handNull.property("ADBE Transform Group").property("ADBE Position")
@@ -213,16 +213,13 @@ function runIt (reps) {
 
 						//	7	ADD COMP TO RENDER QUEUE
 
-
 		if(addToQueue){
 			var bgComp = app.project.item(j);
 			var rQ = app.project.renderQueue;
 			rQ.items.add(bgComp);
 		}
-
-
-		}
 	}
+}
 
 	// Number of Faces to Produce
 	runIt(handRunReps);
