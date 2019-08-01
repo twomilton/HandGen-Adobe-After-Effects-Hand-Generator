@@ -24,7 +24,7 @@ app.beginUndoGroup("Generate Hands");
 
 
 	// Start of Number of Hands to Make Function
-function runIt (reps) {
+function makeHand (reps) {
 
 	var existItems = app.project.items.length;
 	var cleanRun;
@@ -37,18 +37,18 @@ function runIt (reps) {
 
 	for (var j = 1; j <= reps; j++) {
 
-							// BASE SKIN COLOR
+		// BASE SKIN COLOR
 		var baseSkinColor = [rNm(1,1), rNm(1, 0.8), rNm(1, 0.8), 1] * rNm(0.1, 1);
 
 
-						//	1	CREATE NEW COMP
+			//	1	CREATE NEW COMP
 
 
 		var theComp = app.project.items;
 		theComp.addComp("Hand Model " + j, 1080, 1080, 1.0, 50, 30)
 
 
-						//	2	ADD SOLID BG LAYER TO COMP
+			//	2	ADD SOLID BG LAYER TO COMP
 
 
 		.layers.addSolid([ 1 - baseSkinColor[0],
@@ -64,7 +64,7 @@ function runIt (reps) {
 		app.project.item(1).openInViewer();
 
 
-						//	3	ADD "HAND" (PALM) SHAPE TO NEW SHAPE LAYER IN COMP
+			//	3	ADD "HAND" (PALM) SHAPE TO NEW SHAPE LAYER IN COMP
 
 
 			// Create New Layer for Hand Shape
@@ -113,19 +113,19 @@ function runIt (reps) {
 		addTheShape(plmShapeLayer, "Hand Palm", plmShape, plmColors, plmPos, plmScale);
 
 
-						//	4	CREATE FOUR "RUBBER HOSE" STYLE FINGERS ON SHAPE LAYER IN COMP
+			//	4	CREATE FOUR "RUBBER HOSE" STYLE FINGERS ON SHAPE LAYER IN COMP
 
 		#include "fingers.jsx"
 
 
-						//	5	CREATE "RUBBER HOSE" STYLE THUMB ON NEW SHAPE LAYER IN COMP
+			//	5	CREATE "RUBBER HOSE" STYLE THUMB ON NEW SHAPE LAYER IN COMP
 
 
 			// Create New Layer for Thumb Shape
 		var tmbShapeLayer = newShapeLayer(j, "THUMB", 10);
 
 			// Change Layer's Anchor Position to *Follow Eventually* Pelvis Anchor
-	//	swapAnchor(fngShapeLayer, nwPvAnchor);
+		//swapAnchor(fngShapeLayer, nwPvAnchor);
 
 			// Defining Size of fngs
 		// fng size is based on palmGirth
@@ -176,7 +176,7 @@ function runIt (reps) {
 		//app.project.item(j).layer("THUMB").moveBefore(___ShapeLayer);
 
 
-					//	6	ADD NULL LAYER TO COMP & ATTATCH ALL LAYERS
+			//	6	ADD NULL LAYER TO COMP & ATTATCH ALL LAYERS
 
 
 		var thisComp = app.project.item(j);
@@ -211,7 +211,7 @@ function runIt (reps) {
 			app.project.item(j).layer("BG LAYER").remove();
 		}
 
-						//	7	ADD COMP TO RENDER QUEUE
+			//	7	ADD COMP TO RENDER QUEUE
 
 		if(addToQueue){
 			var bgComp = app.project.item(j);
@@ -221,15 +221,15 @@ function runIt (reps) {
 	}
 }
 
-	// Number of Faces to Produce
-	runIt(handRunReps);
+// Number of Faces to Produce
+makeHand(handRunReps);
 
 
-	// End the undo group
-	app.endUndoGroup();
+// End the undo group
+app.endUndoGroup();
 
 
-						//	8	SEND RENDER QUEUE TO MEDIA ENCODER & RENDER
+	//	8	SEND RENDER QUEUE TO MEDIA ENCODER & RENDER
 
 
 if(ameRenderSend){
