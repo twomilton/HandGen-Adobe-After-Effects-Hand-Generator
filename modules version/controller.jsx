@@ -3,18 +3,23 @@
 /*********************************/
 
 // How Many Hands?
-if(handsForPeople){
-  var handRunReps = 0;
-  bGs = 0;
-  //addToQueue = 0;
-}else {
-  handRunReps = 10;
-}
+var handRunReps = 10;
+
+// Test code block for implementing
+//  handGen in bodyGen
+  
+  // if(handsForPeople){
+  //   var handRunReps = 0;
+  //   bGs = 0;
+  //   //addToQueue = 0;
+  // }else {
+  //   handRunReps = 10;
+  // }
 
 /*********************************/
 
 // Background Layers ON/OFF
-var bGs = 0;
+var bGs = 1;
 // Add All Models Comps to
 	// One Comp & Animate (ON/OFF)
 //var composeAndAnimate = 1;
