@@ -1,23 +1,20 @@
-/******************************************************************************
+/**************************************
 
-					HAND GENERATOR SCRIPT
-				Creates Stylistic Cartoon Hand
-			in  1080p Resolution, 1:1 Aspect Ratio
-							v1.0
-					(c) LUX LUV STUDIOS
+		HAND GENERATOR SCRIPT
+Creates Stylistic Cartoon Hand
+in  1080p Resolution, 1:1 Aspect Ratio
+				v1.0.1
+		(c) LUX LUV STUDIOS
 
-******************************************************************************/
-
-					/**	Version 1.0	***/
-//	Generates One Basic Humanoid Hand in a Rubber Hose Cartoon Style
+**************************************/
 
 
-//***************PROGRAM GLOBALS & FUNCTIONS*******************************//
+//****PROGRAM GLOBALS & FUNCTIONS****//
 
 #include "functions.jsx"
 #include "controller.jsx"
 
-//******************************** PROG ***********************************//
+//**** PROG ****//
 
 	// Start Undo Group
 app.beginUndoGroup("Generate Hands");
